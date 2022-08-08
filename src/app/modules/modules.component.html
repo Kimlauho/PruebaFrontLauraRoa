@@ -1,0 +1,43 @@
+<mat-drawer-container class="mat-container" [hasBackdrop]="false">
+
+  <mat-drawer class="nav" #drawer mode="side" opened>
+
+      <mat-nav-list>
+          <div mat-subheader></div>
+
+          <mat-list-item routerLink="" routerLinkActive="'active'">
+              <mat-icon matListIcon>account_balance</mat-icon>
+          <span matLine>Cuentas</span>
+          </mat-list-item >
+
+          <mat-list-item routerLink="transaccion" routerLinkActive="'active'">
+              <mat-icon matListIcon>apartment</mat-icon>
+          <span matLine>Transacciones</span>
+          </mat-list-item>
+
+      </mat-nav-list>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+      <header>
+          <mat-toolbar color="primary">
+              <button mat-icon-button (click)="drawer.toggle()">
+                  <mat-icon>menu</mat-icon>
+              </button>
+
+              <span>Prueba Laura Roa</span>
+              <span class="spacer"></span>
+          </mat-toolbar>
+      </header>
+
+      <main style="margin: 10px;" class="mat-typography">
+          <router-outlet></router-outlet>
+      </main>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+

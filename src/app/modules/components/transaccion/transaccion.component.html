@@ -1,0 +1,42 @@
+<div class="container box-body">
+  <h1 color="primary">Depositar o retirar monto</h1>
+
+  <form autocomplete="off" (ngSubmit)="crearTransaccion()">
+
+    <div mat-dialog-content>
+      <div class="mb-3">
+        <label for="tipo" class="form-label"># Cuenta</label>
+        <select class="form-select" required [(ngModel)]="idTipoTransaccion" (change)="selectedTipoTransaccion(idTipoTransaccion)" name="selectTipo">
+          <option *ngFor="let tipo of tiposTransaccion" [value]="tipo.idTipoTransaccion" > {{ tipo.tipoTransaccion}} </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="idCliente" class="form-label">Cliente</label>
+        <app-clientes (clienteSeleccionado)="selectCliente($event)"></app-clientes>
+      </div>
+      <div class="mb-3">
+        <label for="numCuenta" class="form-label"># Cuenta</label>
+        <select class="form-select" required [(ngModel)]="idCuenta" (change)="selectedCuenta(idCuenta)" name="selectCuenta">
+          <option *ngFor="let cuenta of cuentas" [value]="cuenta.idCuenta" > {{ cuenta.numeroCuenta}} </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="valor" class="form-label">Valor</label>
+        <input type="number" class="form-control" name="valor" id="valor" aria-describedby="valorCuenta" required
+          [(ngModel)]="transaccion.valor">
+      </div>
+      <div class="alert alert-warning" role="alert" *ngIf="alertError">
+        {{mensaje}}
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="alert">
+        {{mensaje}}
+      </div>
+    </div>
+
+    <button type="submit" mat-button aria-label="Save info" color="primary">
+      <mat-icon>save</mat-icon> Guardar
+    </button>
+  </form>
+</div>
+
+

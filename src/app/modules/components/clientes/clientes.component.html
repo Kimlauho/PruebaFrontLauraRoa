@@ -1,0 +1,6 @@
+<select class="form-select" required [(ngModel)]="idCliente" (change)="selectedCliente(idCliente)">
+  <option *ngFor="let cliente of clientes" [value]="cliente.idCliente" >
+    {{ cliente.nombres + ' ' + cliente.apellidos + ' ' + cliente.razonSocial}}
+  </option>
+</select>
+

@@ -1,0 +1,43 @@
+<div class="container box-body">
+  <h1 color="primary">Consultar o crear cuentas</h1>
+
+  <div class="row">
+    <div class="col">
+      <p>
+        Seleccione el cliente para consultar el saldo por cuenta.
+      </p>
+    </div>
+    <div class="col">
+      <app-clientes (clienteSeleccionado)="selectCliente($event)" (change)="obtenerCuentas()">
+      </app-clientes>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        <mat-icon>add_circle</mat-icon> Crear cuenta
+      </button>
+    </div>
+  </div>
+
+  <hr>
+  <div class="alert alert-primary" role="alert" *ngIf="alert">
+    {{ mensaje }}
+  </div>
+  <table class="table table-striped table-bordered" *ngIf="cuentas.length > 0; else elseBlock">
+    <thead>
+      <tr>
+        <th scope="col"># Cuenta</th>
+        <th scope="col">Saldo Disponible</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cuenta of cuentas">
+        <td>{{cuenta.numeroCuenta}}</td>
+        <td>{{cuenta.saldo}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #elseBlock>
+    <p>No se encontraron resultados para la busqueda</p>
+  </ng-template>
+</div>
